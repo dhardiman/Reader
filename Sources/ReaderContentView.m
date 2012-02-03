@@ -161,10 +161,19 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 #ifdef DEBUGX
 	NSLog(@"%s", __FUNCTION__);
 #endif
+    
+    BOOL large = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad); // Page thumb size
+    
+    CGSize size = (large ? CGSizeMake(PAGE_THUMB_LARGE, PAGE_THUMB_LARGE) : CGSizeMake(PAGE_THUMB_SMALL, PAGE_THUMB_SMALL));
+    
+    [self showPageThumb:fileURL page:page password:phrase guid:guid size:size];
+}
 
-	BOOL large = ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad); // Page thumb size
-
-	CGSize size = (large ? CGSizeMake(PAGE_THUMB_LARGE, PAGE_THUMB_LARGE) : CGSizeMake(PAGE_THUMB_SMALL, PAGE_THUMB_SMALL));
+- (void)showPageThumb:(NSURL *)fileURL page:(NSInteger)page password:(NSString *)phrase guid:(NSString *)guid size:(CGSize)size
+{
+#ifdef DEBUGX
+	NSLog(@"%s", __FUNCTION__);
+#endif
 
 	ReaderThumbRequest *request = [ReaderThumbRequest forView:theThumbView fileURL:fileURL password:phrase guid:guid page:page size:size];
 
