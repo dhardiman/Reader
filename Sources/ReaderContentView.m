@@ -302,6 +302,15 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 	}
 }
 
+- (void)highlightPageLinks
+{
+#ifdef DEBUGX
+	NSLog(@"%s", __FUNCTION__);
+#endif
+    
+    [theContentView highlightPageLinks];
+}
+
 #pragma mark UIScrollViewDelegate methods
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView

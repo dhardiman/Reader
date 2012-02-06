@@ -65,6 +65,8 @@
 - (void)zoomDecrement;
 - (void)zoomReset;
 
+- (void)highlightPageLinks;
+
 @end
 
 #pragma mark -

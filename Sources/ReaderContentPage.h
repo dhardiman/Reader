@@ -44,6 +44,8 @@
 
 - (id)singleTap:(UITapGestureRecognizer *)recognizer;
 
+- (void)highlightPageLinks;
+
 @end
 
 #pragma mark -
