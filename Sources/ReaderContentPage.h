@@ -40,6 +40,8 @@
 	CGSize _pageSize;
 }
 
+@property (nonatomic, readonly) NSArray *links;
+
 - (id)initWithURL:(NSURL *)fileURL page:(NSInteger)page password:(NSString *)phrase;
 
 - (id)singleTap:(UITapGestureRecognizer *)recognizer;

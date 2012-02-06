@@ -33,6 +33,10 @@
 
 //@synthesize ;
 
+- (NSArray *)links {
+    return [NSArray arrayWithArray:_links];
+}
+
 #pragma mark ReaderContentPage class methods
 
 + (Class)layerClass
