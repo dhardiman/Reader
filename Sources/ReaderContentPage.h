@@ -48,6 +48,8 @@
 
 - (void)highlightPageLinks;
 
+- (id)annotationLinkTarget:(CGPDFDictionaryRef)annotationDictionary;
+
 @end
 
 #pragma mark -
