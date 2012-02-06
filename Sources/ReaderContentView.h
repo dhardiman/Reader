@@ -67,6 +67,8 @@
 
 - (void)highlightPageLinks;
 
+- (Class)contentPageClass;
+
 @end
 
 #pragma mark -

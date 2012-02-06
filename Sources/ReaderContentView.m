@@ -74,6 +74,10 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 	zoomAmount = ((self.maximumZoomScale - self.minimumZoomScale) / ZOOM_LEVELS);
 }
 
+- (Class)contentPageClass {
+    return [ReaderContentPage class];
+}
+
 - (id)initWithFrame:(CGRect)frame fileURL:(NSURL *)fileURL page:(NSUInteger)page password:(NSString *)phrase
 {
 #ifdef DEBUGX
@@ -94,7 +98,7 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 		self.bouncesZoom = YES;
 		self.delegate = self;
 
-		theContentView = [[ReaderContentPage alloc] initWithURL:fileURL page:page password:phrase];
+		theContentView = [[[self contentPageClass] alloc] initWithURL:fileURL page:page password:phrase];
 
 		if (theContentView != nil) // Must have a valid and initialized content view
 		{
