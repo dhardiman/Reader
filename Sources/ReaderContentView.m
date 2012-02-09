@@ -99,6 +99,14 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 		self.delegate = self;
 
 		theContentView = [[[self contentPageClass] alloc] initWithURL:fileURL page:page password:phrase];
+        if (!theContentView)
+        {
+            /*
+             PDF failed to open, so return nil here so user can handle it
+             */
+            [self release];
+            return nil;
+        }
 
 		if (theContentView != nil) // Must have a valid and initialized content view
 		{
@@ -148,8 +156,12 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 #ifdef DEBUGX
 	NSLog(@"%s", __FUNCTION__);
 #endif
-
-	[self removeObserver:self forKeyPath:@"frame"];
+    @try {
+        [self removeObserver:self forKeyPath:@"frame"];
+    }
+    @catch (NSException *ex) {
+        NSLog(@"%@", ex);
+    }
 
 	[theContainerView release], theContainerView = nil;
 

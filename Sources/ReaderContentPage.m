@@ -516,7 +516,12 @@
 		}
 		else // Error out with a diagnostic
 		{
-			NSAssert(NO, @"CGPDFDocumentRef == NULL");
+			//NSAssert(NO, @"CGPDFDocumentRef == NULL");
+            /* Blowing up isn't particularly useful for the user
+             if the pdf is invalid, so let's return nil so we can
+             handle it */
+            [self release];
+            return nil;
 		}
 	}
 	else // Error out with a diagnostic
