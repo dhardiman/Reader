@@ -69,6 +69,8 @@
 
 - (Class)contentPageClass;
 
+- (CGFloat)defaultContentInset;
+
 @end
 
 #pragma mark -
