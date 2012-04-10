@@ -76,8 +76,14 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 	zoomAmount = ((self.maximumZoomScale - self.minimumZoomScale) / ZOOM_LEVELS);
 }
 
-- (Class)contentPageClass {
+- (Class)contentPageClass
+{
     return [ReaderContentPage class];
+}
+
+- (Class)containerViewClass
+{
+    return [UIView class];
 }
 
 - (id)initWithFrame:(CGRect)frame fileURL:(NSURL *)fileURL page:(NSUInteger)page password:(NSString *)phrase
@@ -112,7 +118,7 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 
 		if (theContentView != nil) // Must have a valid and initialized content view
 		{
-			theContainerView = [[UIView alloc] initWithFrame:theContentView.bounds];
+			theContainerView = [[[self containerViewClass] alloc] initWithFrame:theContentView.bounds];
 
 			theContainerView.autoresizesSubviews = NO;
 			theContainerView.userInteractionEnabled = NO;

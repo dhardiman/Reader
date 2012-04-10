@@ -69,6 +69,8 @@
 
 - (Class)contentPageClass;
 
+- (Class)containerViewClass;
+
 - (CGFloat)defaultContentInset;
 
 @end
