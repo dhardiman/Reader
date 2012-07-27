@@ -294,6 +294,45 @@ static inline CGFloat ZoomScaleThatFits(CGSize target, CGSize source)
 	}
 }
 
+- (void)zoomIncrementToPoint:(CGPoint)point
+{
+    CGFloat zoomScale = self.zoomScale;
+    
+	if (zoomScale < self.maximumZoomScale)
+	{
+		zoomScale += zoomAmount; // += value
+        
+		if (zoomScale > self.maximumZoomScale)
+		{
+			zoomScale = self.maximumZoomScale;
+		}
+
+        //Normalize current content size back to content scale of 1.0f
+        CGSize contentSize;
+        contentSize.width = (self.contentSize.width / self.zoomScale);
+        contentSize.height = (self.contentSize.height / self.zoomScale);
+        
+        //translate the zoom point to relative to the content rect
+        point.x = (point.x / self.bounds.size.width) * contentSize.width;
+        point.y = (point.y / self.bounds.size.height) * contentSize.height;
+        
+        //derive the size of the region to zoom to
+        CGSize zoomSize;
+        zoomSize.width = self.bounds.size.width / zoomScale;
+        zoomSize.height = self.bounds.size.height / zoomScale;
+        
+        //offset the zoom rect so the actual zoom point is in the middle of the rectangle
+        CGRect zoomRect;
+        zoomRect.origin.x = point.x - zoomSize.width / 2.0f;
+        zoomRect.origin.y = point.y - zoomSize.height / 2.0f;
+        zoomRect.size.width = zoomSize.width;
+        zoomRect.size.height = zoomSize.height;
+        
+        //apply the resize
+        [self zoomToRect:zoomRect animated:YES];
+    }
+}
+
 - (void)zoomDecrement
 {
 #ifdef DEBUGX

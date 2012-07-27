@@ -62,6 +62,7 @@
 - (id)singleTap:(UITapGestureRecognizer *)recognizer;
 
 - (void)zoomIncrement;
+- (void)zoomIncrementToPoint:(CGPoint)point;
 - (void)zoomDecrement;
 - (void)zoomReset;
 
