@@ -429,12 +429,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Reader-Prefix.pch";
 				INFOPLIST_FILE = "Reader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = Reader;
 			};
 			name = Debug;
@@ -443,10 +445,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Reader-Prefix.pch";
 				INFOPLIST_FILE = "Reader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = Reader;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -474,10 +478,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Reader-Prefix.pch";
 				INFOPLIST_FILE = "Reader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = Reader;
 			};
 			name = Testing;
